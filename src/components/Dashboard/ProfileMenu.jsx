@@ -1,9 +1,9 @@
 export default function ProfileMenu() {
   const menuItems = [
-    { label: 'Profile', href: '/profile' },
+    { label: 'Profile', href: '/settings' },
     { label: 'Account settings', href: '/settings' },
     { label: 'Help', href: '/help' },
-    { label: 'Sign out', href: '/logout' },
+    { label: 'Sign out', href: '/login' },
   ];
 
   return (

@@ -15,7 +15,7 @@ export default function Hero() {
           <div className="lg:col-span-6 space-y-6 text-center lg:text-left">
             {/* Eyebrow Badge */}
             <div className="hero-enter hero-enter-1 inline-flex max-w-full flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-full border border-indigo-100 bg-soft-indigo px-3 py-1.5 text-xs font-semibold text-primary sm:flex-nowrap">
-              <span className="w-2 h-2 rounded-full bg-primary" />
+              <span className="w-2 h-2 rounded-full bg-primary pulse-glow" />
               <span>Next-Gen CRM Workspace</span>
               <span className="text-indigo-300">•</span>
               <span className="text-secondary-text">Built for B2B Teams</span>

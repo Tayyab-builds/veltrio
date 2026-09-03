@@ -25,6 +25,10 @@ import Benefits from "./components/features/Benefits";
 import FinalCTA from "./components/features/FinalCTA";
 import Footer from "./components/layout/Footer";
 import VeltrioAI from './components/ai/VeltrioAI';
+import About from './pages/About';
+import Pricing from './pages/Pricing';
+import InfoPage from './pages/InfoPage';
+import Contact from './pages/Contact';
 
 export default function App() {
   const path = window.location.pathname;
@@ -46,6 +50,17 @@ export default function App() {
   if (path === '/reports') return <Reports />;
   if (path === '/team') return <Team />;
   if (path === '/settings') return <Settings />;
+  if (path === '/about') return <About />;
+  if (path === '/pricing') return <Pricing />;
+  if (path === '/integrations') return <InfoPage page="integrations" />;
+  if (path === '/solutions') return <InfoPage page="solutions" />;
+  if (path === '/resources') return <InfoPage page="resources" />;
+  if (path === '/documentation') return <InfoPage page="documentation" />;
+  if (path === '/help') return <InfoPage page="help" />;
+  if (path === '/privacy') return <InfoPage page="privacy" />;
+  if (path === '/terms') return <InfoPage page="terms" />;
+  if (path === '/security') return <InfoPage page="security" />;
+  if (path === '/contact') return <Contact />;
 
   // Landing page
   return (

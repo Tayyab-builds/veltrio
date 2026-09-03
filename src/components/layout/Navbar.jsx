@@ -3,15 +3,24 @@ import { CloseIcon, MenuIcon } from "../ui/icons";
 import Logo from "../ui/Logo";
 
 const navigation = [
-  { name: "Features", href: "#features" },
-  { name: "Pipeline", href: "#pipeline" },
-  { name: "Analytics", href: "#analytics" },
-  { name: "How It Works", href: "#how-it-works" },
+  { name: "Features", href: "/#features" },
+  { name: "Pipeline", href: "/#pipeline" },
+  { name: "Analytics", href: "/#analytics" },
+  { name: "How It Works", href: "/#how-it-works" },
+  { name: "Pricing", href: "/pricing" },
+  { name: "About", href: "/about" },
 ];
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const currentPath = typeof window !== "undefined" ? window.location.pathname : "/";
+
+  // Check if a nav item is active
+  const isActive = (href) => {
+    if (href.startsWith("/#")) return currentPath === "/" && href === "/#features"; // keep simple; anchor active only for features? Better ignore anchors for active state
+    return currentPath === href;
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -56,7 +65,11 @@ export default function Navbar() {
               <a
                 key={item.name}
                 href={item.href}
-                className="nav-link text-sm font-semibold leading-6 text-primary-text hover:text-primary"
+                className={`nav-link text-sm font-semibold leading-6 ${
+                  isActive(item.href)
+                    ? "text-primary border-b-2 border-primary"
+                    : "text-primary-text hover:text-primary"
+                }`}
               >
                 {item.name}
               </a>
@@ -85,7 +98,11 @@ export default function Navbar() {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="nav-link block rounded-lg px-3 py-2 text-base font-semibold text-primary-text hover:bg-soft-indigo hover:text-primary"
+                  className={`nav-link block rounded-lg px-3 py-2 text-base font-semibold ${
+                    isActive(item.href)
+                      ? "bg-soft-indigo text-primary"
+                      : "text-primary-text hover:bg-soft-indigo hover:text-primary"
+                  }`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {item.name}

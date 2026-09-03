@@ -125,6 +125,7 @@ src/
 │   │   ├── Footer.jsx
 │   │   └── Navbar.jsx
 │   └── ui/
+│       ├── ContactFloatingButton.jsx
 │       ├── FeatureCard.jsx
 │       ├── icons.jsx
 │       ├── Logo.jsx
@@ -143,18 +144,22 @@ src/
 │   ├── usePointerGlow.js
 │   └── useReveal.js
 ├── pages/
+│   ├── About.jsx
 │   ├── Analytics.jsx
 │   ├── BookDemoPage.jsx
 │   ├── Clients.jsx
+│   ├── Contact.jsx
 │   ├── Contacts.jsx
 │   ├── Dashboard.jsx
 │   ├── DashboardPage.jsx
 │   ├── Deals.jsx
 │   ├── ForgotPasswordPage.jsx
 │   ├── Home.jsx
+│   ├── InfoPage.jsx
 │   ├── Leads.jsx
 │   ├── LoginPage.jsx
 │   ├── Pipeline.jsx
+│   ├── Pricing.jsx
 │   ├── Reports.jsx
 │   ├── Settings.jsx
 │   ├── SignupPage.jsx

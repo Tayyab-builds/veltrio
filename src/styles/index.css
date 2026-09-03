@@ -1,0 +1,475 @@
+﻿@import "tailwindcss";
+
+@theme {
+  --color-primary: #4F46E5;
+  --color-primary-dark: #3730A3;
+  --color-accent: #7C3AED;
+  --color-accent-light: #8B5CF6;
+  --color-dark: #0F172A;
+  --color-main-bg: #F8FAFC;
+  --color-primary-text: #0F172A;
+  --color-secondary-text: #475569;
+  --color-muted-text: #64748B;
+  --color-border-color: #E2E8F0;
+  --color-soft-indigo: #EEF2FF;
+  --font-sans: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+@layer base {
+  html {
+    overflow-x: hidden;
+  }
+
+  body {
+    min-width: 320px;
+    background-color: var(--color-main-bg);
+    color: var(--color-primary-text);
+    overflow-x: hidden;
+  }
+
+  *, ::before, ::after {
+    border-color: var(--color-border-color);
+  }
+
+  button, input, select, textarea {
+    font: inherit;
+  }
+
+  :focus-visible {
+    outline: 2px solid rgba(79, 70, 229, 0.7);
+    outline-offset: 2px;
+  }
+}
+
+/* ---------- CRM design system ---------- */
+.crm-shell {
+  background: radial-gradient(circle at 100% 0%, rgba(238, 242, 255, 0.75), transparent 29rem), var(--color-main-bg);
+}
+
+.crm-shell input:not([type='checkbox']):not([type='radio']),
+.crm-shell select,
+.crm-shell textarea {
+  min-height: 2.5rem;
+  border-color: var(--color-border-color);
+  background-color: #fff;
+  color: var(--color-dark);
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+}
+
+.crm-shell textarea {
+  min-height: 5.5rem;
+}
+
+.crm-shell input::placeholder,
+.crm-shell textarea::placeholder {
+  color: #94a3b8;
+}
+
+.crm-shell input:not([type='checkbox']):not([type='radio']):focus,
+.crm-shell select:focus,
+.crm-shell textarea:focus {
+  outline: none;
+  border-color: rgba(79, 70, 229, 0.55);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.11);
+}
+
+.crm-shell input[type='checkbox'] {
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.crm-shell table th {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
+}
+
+.crm-shell table tbody tr {
+  transition: background-color 0.18s ease;
+}
+
+.crm-shell button:not(:disabled),
+.crm-shell a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.icon-button {
+  display: inline-flex;
+  height: 2.5rem;
+  width: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.625rem;
+  transition: color 0.18s ease, background-color 0.18s ease, transform 0.18s ease;
+}
+
+.icon-button:hover {
+  background-color: #f8fafc;
+}
+
+.icon-button:active {
+  transform: scale(0.95);
+}
+
+@keyframes sidebar-enter {
+  from { opacity: 0; transform: translateX(-1rem); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.sidebar-drawer {
+  animation: sidebar-enter 0.2s ease-out both;
+}
+
+@keyframes ai-panel-enter {
+  from { opacity: 0; transform: translateY(0.75rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.ai-panel-animate {
+  animation: ai-panel-enter 0.2s ease-out both;
+}
+
+/* ---------- Scroll Reveal ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Hero Entrance ---------- */
+@keyframes hero-fade-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-enter {
+  opacity: 0;
+  animation: hero-fade-up 0.8s forwards;
+}
+
+.hero-enter-1 { animation-delay: 0.1s; }
+.hero-enter-2 { animation-delay: 0.2s; }
+.hero-enter-3 { animation-delay: 0.3s; }
+.hero-enter-4 { animation-delay: 0.4s; }
+.hero-enter-5 { animation-delay: 0.5s; }
+.hero-enter-6 { animation-delay: 0.6s; }
+
+/* ---------- Button Interactions ---------- */
+.btn-premium {
+  position: relative;
+  isolation: isolate;
+  transition: transform 0.18s ease,
+              box-shadow 0.2s ease,
+              filter 0.2s ease,
+              background-color 0.2s ease;
+  will-change: transform, box-shadow, filter;
+}
+
+.crm-shell .btn-premium {
+  min-height: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.625rem;
+}
+
+/* Desktop hover */
+@media (hover: hover) and (pointer: fine) {
+  .btn-premium:hover {
+    filter: brightness(1.08);
+    box-shadow: 0 0 20px rgba(79, 70, 229, 0.15),
+                0 8px 24px -8px rgba(79, 70, 229, 0.2);
+    transform: translateY(-1px);
+  }
+  .btn-premium:hover::before {
+    opacity: 1;
+  }
+}
+
+/* Press effect (both desktop and mobile) */
+.btn-premium:active {
+  transform: scale(0.97);
+  filter: brightness(1.12);
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.2);
+  transition-duration: 0.1s;
+}
+
+/* Subtle glow overlay */
+.btn-premium::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    120% 120% at 50% 0%,
+    rgba(255, 255, 255, 0.15) 0%,
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Focus visible */
+.btn-premium:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ---------- Card Interactions ---------- */
+.card-premium {
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.3s ease,
+              border-color 0.3s ease,
+              background-color 0.3s ease;
+  will-change: transform, box-shadow, border-color;
+}
+
+/* Desktop hover glow */
+@media (hover: hover) and (pointer: fine) {
+  .card-premium:hover {
+    transform: translateY(-4px);
+    border-color: rgba(79, 70, 229, 0.3);
+    box-shadow: 0 12px 28px -8px rgba(15, 23, 42, 0.08),
+                0 0 24px rgba(79, 70, 229, 0.08);
+  }
+
+  .card-premium::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: radial-gradient(
+      400px circle at var(--pointer-x, 50%) var(--pointer-y, 50%),
+      rgba(79, 70, 229, 0.06),
+      transparent 60%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .card-premium:hover::after {
+    opacity: 1;
+  }
+}
+
+/* Mobile touch feedback */
+.card-premium:active {
+  transform: scale(0.99);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+  border-color: rgba(79, 70, 229, 0.25);
+}
+
+/* ---------- Link Interactions ---------- */
+.link-underline {
+  position: relative;
+  text-decoration: none;
+}
+
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.25s ease;
+}
+
+.link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ---------- Navigation Micro-interactions ---------- */
+.nav-link {
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-link:hover {
+  opacity: 0.85;
+}
+
+/* Mobile menu transition */
+.mobile-menu-enter {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* ---------- Icon Micro-interactions ---------- */
+.icon-hover {
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.icon-hover:hover {
+  transform: translateY(-1px);
+}
+
+/* ---------- Pointer Glow (for selected cards) ---------- */
+.pointer-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.pointer-glow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    400px circle at var(--pointer-x, 50%) var(--pointer-y, 50%),
+    rgba(79, 70, 229, 0.08),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .pointer-glow:hover::after {
+    opacity: 1;
+  }
+}
+
+/* ---------- Bar Chart Animation ---------- */
+@keyframes grow-bar {
+  from { transform: scaleY(0); }
+  to   { transform: scaleY(1); }
+}
+
+.bar-animate {
+  transform-origin: bottom;
+  animation: grow-bar 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ---------- Ambient Float ---------- */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+.animate-float {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+/* ---------- VELTRIO Logo Sign Glow Animation ---------- */
+.logo-sign {
+  animation: logo-sign-glow 3.5s ease-in-out infinite;
+}
+
+@keyframes logo-sign-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 0px rgba(79, 70, 229, 0));
+  }
+  50% {
+    filter: drop-shadow(0 0 6px rgba(79, 70, 229, 0.6));
+  }
+}
+
+/* ---------- Reduced Motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .hero-enter,
+  .bar-animate,
+  .animate-float,
+  .logo-sign,
+  .navbar-animate {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .btn-premium,
+  .card-premium {
+    transition: none !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  .pointer-glow::after,
+  .card-premium::after {
+    display: none !important;
+  }
+
+  .logo-sign {
+    filter: none !important;
+  }
+
+  .sidebar-drawer {
+    animation: none !important;
+  }
+
+  .ai-panel-animate {
+    animation: none !important;
+  }
+
+  .dashboard-sidebar {
+    transition: none !important;
+  }
+}
+
+@media (max-width: 639px) {
+  .crm-shell main {
+    padding-bottom: 2rem;
+  }
+
+  .crm-shell table {
+    font-size: 0.8125rem;
+  }
+}
+
+/* ---------- Floating Glass Navbar (scroll reveal) ---------- */
+.navbar-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.08);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+
+/* Animation when the navbar becomes fixed */
+.navbar-animate {
+  animation: navbarSlideDown 0.3s ease forwards;
+}
+
+@keyframes navbarSlideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ---------- Sticky Navbar & Anchor Offset ---------- */
+section[id] {
+  scroll-margin-top: 80px;
+}
+
+.navbar-fixed {
+  /* ... existing rules ... */
+  background-color: rgba(255, 255, 255, 0.55); /* adjust alpha as needed */
+}
